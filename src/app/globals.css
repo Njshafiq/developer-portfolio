@@ -1,0 +1,196 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-grid: #f5f3ec;
+    --card: #ffffff;
+    --ink: #141210;
+    --ink-muted: #57534e;
+    --line: #141210;
+    --tape-yellow: #fde047;
+    --tape-orange: #fdba74;
+    --tape-blue: #93c5fd;
+    --tape-green: #86efac;
+    --tape-pink: #f9a8d4;
+  }
+
+  .dark {
+    --bg-grid: #0d0c0a;
+    --card: #1c1917;
+    --ink: #fafaf9;
+    --ink-muted: #a8a29e;
+    --line: #3f3c36;
+    --tape-yellow: #a16207;
+    --tape-orange: #9a3412;
+    --tape-blue: #1e40af;
+    --tape-green: #166534;
+    --tape-pink: #9d174d;
+  }
+}
+
+/* Notebook Math Grid Background */
+body {
+  background-color: var(--bg-grid);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.055) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.055) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  scroll-behavior: smooth;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.04) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1.5px, transparent 1.5px);
+}
+
+/* Organic Hand-Drawn Wobbly Borders */
+.hand-card {
+  border: 2.8px solid var(--line);
+  border-radius: 26px 32px 24px 30px / 30px 24px 32px 26px;
+  box-shadow: 4px 6px 0px var(--line);
+  transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.hand-card:hover {
+  transform: translateY(-3px) rotate(-0.4deg);
+  box-shadow: 6px 9px 0px var(--line);
+}
+
+/* Washi Tape Strip on Top of Cards */
+.washi-tape {
+  position: absolute;
+  top: -12px;
+  left: 28px;
+  width: 90px;
+  height: 24px;
+  background-color: #fef08a;
+  border-left: 2px dashed rgba(0,0,0,0.3);
+  border-right: 2px dashed rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transform: rotate(-3deg);
+  z-index: 20;
+}
+
+.washi-tape-orange {
+  background-color: #fed7aa;
+  transform: rotate(2.5deg);
+  left: auto;
+  right: 32px;
+}
+
+.washi-tape-green {
+  background-color: #bbf7d0;
+  transform: rotate(-2deg);
+}
+
+.washi-tape-pink {
+  background-color: #fbcfe8;
+  transform: rotate(3deg);
+}
+
+/* Floating Hand-Drawn Nav Capsule */
+.hand-nav {
+  border: 2.5px solid var(--line);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 5px 0px var(--line);
+}
+
+.font-handwriting {
+  font-family: 'Caveat', 'Segoe Print', 'Comic Sans MS', cursive;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Authentic Hand-Drawn Wavy Squiggle Underline */
+.wavy-active {
+  position: relative;
+}
+.wavy-active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 8%;
+  right: 8%;
+  height: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='8' viewBox='0 0 40 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4C5 1 7 7 11 4C15 1 17 7 21 4C25 1 27 7 31 4C35 1 37 7 39 4' stroke='%23ea580c' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 24px 6px;
+}
+
+/* Yellow Highlighter Pen Effect */
+.highlighter {
+  background: linear-gradient(104deg, rgba(254, 240, 138, 0.9) 0.9%, rgba(253, 224, 71, 0.85) 98.4%);
+  padding: 0.1em 0.35em;
+  border-radius: 4px 6px 3px 5px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  color: #1c1917;
+}
+.dark .highlighter {
+  background: linear-gradient(104deg, rgba(161, 98, 7, 0.65) 0.9%, rgba(133, 77, 14, 0.75) 98.4%);
+  color: #fef08a;
+}
+
+/* Neobrutalist tactile button */
+.hand-btn {
+  border: 2.5px solid var(--line);
+  border-radius: 18px 22px 17px 21px / 21px 17px 22px 18px;
+  box-shadow: 4px 4px 0px var(--line);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.hand-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px var(--line);
+}
+
+.hand-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0px var(--line);
+}
+
+/* Neobrutalist buttons & boxes */
+.neo-btn {
+  border: 2px solid var(--line);
+  box-shadow: 2px 2px 0px var(--line);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.neo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--line);
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px var(--line);
+}
+
+.neo-box {
+  border: 2px solid var(--line);
+  box-shadow: 3px 4px 0px var(--line);
+}
+
+/* Looping Ticker Track */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 25s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
